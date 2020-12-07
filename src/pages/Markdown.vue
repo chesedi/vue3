@@ -18,6 +18,7 @@
 import marked from 'marked';
 import debounce from '../utilities/mixins/debounce';
 export default {
+  beforeCreate() {},
   mixins: [debounce],
   data() {
     return {
