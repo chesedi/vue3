@@ -9,8 +9,9 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "tailwindcss": "^1.8.10",
     "vue": "^3.0.0",
-    "tailwindcss": "^1.8.10"
+    "vue-router": "^4.0.0-rc.6"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
