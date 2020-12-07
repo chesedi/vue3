@@ -1,13 +1,16 @@
 <template>
-  <div class="flex flex-wrap w-full">
-    <div class="w-full" v-for="(color, index) in sliders" :key="color">
-      <div
-        v-if="currentSlide == index"
-        :class="color"
-        style="height:350px"
-      ></div>
+  <div class="flex flex-wrap w-full relative">
+    <div class="absolute w-full" v-for="(color, index) in sliders" :key="color">
+      <transition name="fade">
+        <div
+          v-if="currentSlide == index"
+          :class="color"
+          style="height:350px"
+        ></div>
+      </transition>
     </div>
-    <div class="my-10 flex w-full">
+
+    <!-- <div class="my-10 flex w-full">
       <div class="m-auto">
         <transition name="fade">
           <h1 v-if="isTitleShowing">Slide Carousel</h1>
@@ -19,7 +22,7 @@
           Toggle Text
         </button>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -47,11 +50,15 @@ export default {
 <style>
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 0.5s ease;
+  transition: all 1s ease;
 }
 
-.fade-enter-from,
+.fade-enter-from {
+  opacity: 0;
+  transform: translateX(-100%);
+}
 .fade-leave-to {
   opacity: 0;
+  transform: translateX(100%);
 }
 </style>
