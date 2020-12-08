@@ -9,6 +9,17 @@
         ></div>
       </transition>
     </div>
+    <div class="w-full" style="height:340px">
+      <div class="absolute bottom-0 w-full flex justify-center">
+        <div
+          v-for="(slider, index) in sliders"
+          :key="slider"
+          @click="makeActive(index)"
+          :class="currentSlide == index ? 'bg-gray-700' : 'bg-gray-300'"
+          class="w-4 h-4 mx-2 rounded-full cursor-pointer shadow-md"
+        ></div>
+      </div>
+    </div>
 
     <!-- <div class="my-10 flex w-full">
       <div class="m-auto">
@@ -30,11 +41,16 @@
 export default {
   data() {
     return {
-      currentSlide: 0,
-      sliders: ['bg-teal-600', 'bg-yellow-600', 'bg-blue-600'],
+      currentSlide: 1,
+      sliders: ['bg-teal-600', 'bg-blue-600', 'bg-yellow-600'],
       interval: '',
       isTitleShowing: true,
     };
+  },
+  methods: {
+    makeActive(index) {
+      this.currentSlide = index;
+    },
   },
   mounted() {
     this.interval = setInterval(() => {
