@@ -49,6 +49,9 @@ export default {
       return this.dcHeros.length;
     },
   },
+  mounted() {
+    this.$refs.newHeroRef.focus();
+  },
   methods: {
     addHero() {
       if (this.newHero.value !== '') {

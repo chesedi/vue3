@@ -4,6 +4,7 @@
     <section class="flex m-auto w-10/12 h-screen">
       <article class="w-1/2 border">
         <textarea
+          ref="markdownTextArea"
           class="w-full h-full"
           :value="text"
           @input="update"
@@ -29,6 +30,9 @@ export default {
     markedText() {
       return marked(this.text);
     },
+  },
+  mounted() {
+    this.$refs.markdownTextArea.focus();
   },
   methods: {
     update(e) {
