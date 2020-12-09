@@ -5,7 +5,7 @@ export default {
     };
   },
   methods: {
-    deboundce(func, wait = 1000) {
+    debounce(func, wait = 1000) {
       clearTimeout(this.timeout);
       setTimeout(func, wait);
     },

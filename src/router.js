@@ -5,14 +5,16 @@ import Home from './pages/Home';
 import Markdown from './pages/Markdown';
 import Slider from './pages/Slider';
 import Calculator from './pages/Calculator';
+import ReuseableModal from './pages/ReuseableModal';
 
 const routes = [
   { path: '/', component: Home },
   { path: '/dc-heros', component: DcHeros },
   { path: '/calendar', component: Calendar },
   { path: '/markdown', component: Markdown },
-  { path: '/Slider', component: Slider },
+  { path: '/slider-carousel', component: Slider },
   { path: '/calculator', component: Calculator },
+  { path: '/reuseable-modal', component: ReuseableModal },
 ];
 
 const router = createRouter({

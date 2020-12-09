@@ -17,13 +17,13 @@
 
 <script>
 import marked from 'marked';
-import debounce from '../utilities/mixins/debounce';
+import useDebounce from '../utilities/composition/useDebounce';
 export default {
-  beforeCreate() {},
-  mixins: [debounce],
+  setup() {},
   data() {
     return {
       text: '',
+      debounce: '',
     };
   },
   computed: {
@@ -32,12 +32,13 @@ export default {
     },
   },
   mounted() {
+    this.debounce = useDebounce();
     this.$refs.markdownTextArea.focus();
   },
   methods: {
     update(e) {
       const task = () => (this.text = e.target.value);
-      this.deboundce(task, 500);
+      this.debounce(task, 500);
     },
   },
 };
