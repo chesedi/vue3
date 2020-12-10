@@ -53,7 +53,7 @@ export default {
   components: { GoogleLogin },
   data() {
     return {
-      email: 'a02t02@gmail.com',
+      email: 'a02t02@naver.com',
       password: 'password',
       isLoading: false,
     };
