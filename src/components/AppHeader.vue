@@ -10,7 +10,7 @@
       >{{ item.title }}</router-link
     >
     <button v-if="isLoggedIn" class="mx-2" @click="logout">Logout</button>
-    <button v-else class="mx-2" @click="$emit('open-login-modal')">
+    <button v-else class="mx-2" @click="openLogin">
       Login
     </button>
   </nav>
@@ -34,21 +34,15 @@ export default {
   },
   computed: {
     isLoggedIn() {
-      console.log(this.$store.state.isLoggedIn);
       return this.$store.state.isLoggedIn;
     },
   },
   methods: {
     logout() {
-      firebase
-        .auth()
-        .signOut()
-        .then(function(res) {
-          console.log(res);
-        })
-        .catch(function(e) {
-          console.log(e);
-        });
+      firebase.auth().signOut();
+    },
+    openLogin() {
+      this.$store.commit('setLoginModal', true);
     },
   },
 };

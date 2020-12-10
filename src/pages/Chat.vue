@@ -27,15 +27,18 @@
 </template>
 
 <script>
-import { onMounted, reactive } from 'vue';
+import { computed, onMounted, reactive } from 'vue';
 import { chatsRef } from '../utilities/firebase';
+import { useStore } from 'vuex';
 export default {
   setup() {
     const state = reactive({
       chats: [],
       message: '',
-      collection: null,
     });
+
+    const store = useStore();
+    const userId = computed(() => store.state.authUser.uid);
 
     onMounted(async () => {
       chatsRef.on('child_added', snapshot => {
@@ -44,12 +47,12 @@ export default {
     });
 
     function addMessage() {
-      // const newChat = chatsRef.push();
-      // newChat.set({ userId: userId.value, message: state.message });
+      const newChat = chatsRef.push();
+      newChat.set({ userId: userId.value, message: state.message });
       state.message = '';
     }
 
-    return { state, addMessage };
+    return { state, addMessage, userId };
   },
 };
 </script>
